@@ -1,0 +1,5 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/mariihos/public_html/whgit
+    - /bin/cp -R _site $DEPLOYPATH
