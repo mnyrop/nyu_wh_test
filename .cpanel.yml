@@ -2,4 +2,5 @@
 deployment:
   tasks:
     - export DEPLOYPATH=/home/mariihos/public_html/whgit
-    - /bin/cp -R _site $DEPLOYPATH
+    - export REPOPATH=/home/mariihos/repositories/nyu_wh_test
+    - /bin/cp -R $REPOPATH/_site $DEPLOYPATH
