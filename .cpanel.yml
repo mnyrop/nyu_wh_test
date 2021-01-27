@@ -1,8 +1,0 @@
----
-deployment:
- tasks:
-  - export REPOPATH=/home/mariihos/repositories/nyu_wh_test
-  - export DEPLOYPATH=/home/mariihos/public_html/whgit
-  - cd $REPOPATH && git fetch && git pull
-  - rm -rf $DEPLOYPATH && mkdir $DEPLOYPATH
-  - cp -r $REPOPATH/_site/* $DEPLOYPATH
