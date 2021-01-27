@@ -36,7 +36,7 @@ task :deploy do
         system "git checkout -b main"
         system "git add . && git commit -m '#{COMMIT_MSG}'"
         system "git remote add deploy #{REMOTE}"
-        system "git push --force --quiet deploy main:main"
+        system "git push --force --quiet deploy main:refs/heads/main"
       end
     else
       puts "This task only runs on the main branch. Skipping for #{BRANCH}."
