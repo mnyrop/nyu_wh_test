@@ -33,8 +33,8 @@ task :deploy do
         cp_r '_site/.', tmp
         Dir.chdir tmp
         system 'git init'
+        system "git checkout -b main"
         system "git add . && git commit -m '#{COMMIT_MSG}'"
-        system "git branch"
         system "git remote add deploy #{REMOTE}"
         system "git push --force --quiet deploy main:main"
       end
