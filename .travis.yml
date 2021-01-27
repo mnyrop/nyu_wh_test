@@ -1,0 +1,8 @@
+language: ruby
+rvm:
+ - 2.6
+script:
+  - bundle exec jekyll build
+  - bundle exec rake test
+after_success:
+  - bundle exec rake git:push:static
