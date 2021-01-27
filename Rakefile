@@ -26,7 +26,7 @@ task :deploy do
       USER        = ENV['GIT_USER'].freeze
       PW          = ENV['GIT_PW'].freeze
       TARGET      = ENV['GIT_TARGET'].freeze
-      REMOTE      = "https://${USER}:${PW}@${TARGET}".freeze
+      REMOTE      = "ssh://${USER}:${PW}@${TARGET}".freeze
       puts "Deploying to host from Travis-CI"
 
       Dir.mktmpdir do |tmp|
