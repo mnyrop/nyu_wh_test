@@ -34,8 +34,9 @@ task :deploy do
         Dir.chdir tmp
         system 'git init'
         system "git add . && git commit -m '#{COMMIT_MSG}'"
+        system "git branch"
         system "git remote add deploy #{REMOTE}"
-        system "git push --force --quiet deploy main"
+        system "git push --force --quiet deploy main:main"
       end
     else
       puts "This task only runs on the main branch. Skipping for #{BRANCH}."
