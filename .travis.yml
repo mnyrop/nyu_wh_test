@@ -3,7 +3,7 @@ rvm:
  - 2.6
 addons:
   ssh_known_hosts:
-  - git.example.com
+  - marii.hosting.nyu.edu
 env:
   global:
   - NOKOGIRI_USE_SYSTEM_LIBRARIES=true
