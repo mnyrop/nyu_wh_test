@@ -34,7 +34,7 @@ task :deploy do
       system "git checkout -b main"
       system "git add . && git commit -m '#{COMMIT_MSG}'"
       system "git remote add server #{REMOTE}"
-      system "git push server main --force"
+      system "git push server main --force -y"
     else
       puts "This task only runs on the main branch. Skipping for #{BRANCH}."
     end
