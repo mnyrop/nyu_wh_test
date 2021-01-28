@@ -19,14 +19,14 @@ end
 
 desc 'push built site to host'
 task :deploy do
-  if ENV.fetch('CI', false)
-    BRANCH = ENV['TRAVIS_BRANCH']
-    if BRANCH == 'main'
+  # if ENV.fetch('CI', false)
+  #   BRANCH = ENV['TRAVIS_BRANCH']
+  #   if BRANCH == 'main'
       COMMIT_MSG  = "Site updated via #{ENV['TRAVIS_COMMIT']}".freeze
       USER        = ENV['GIT_USER'].freeze
       PW          = ENV['GIT_PW'].freeze
       TARGET      = ENV['GIT_TARGET'].freeze
-      REMOTE      = "ssh://#{USER}:#{PW}@#{TARGET}".freeze
+      REMOTE      = "https://#{USER}:#{PW}@#{TARGET}".freeze
       puts "Deploying to host from Travis-CI"
 
       Dir.chdir '_site'
@@ -34,11 +34,11 @@ task :deploy do
       system "git checkout -b main"
       system "git add . && git commit -m '#{COMMIT_MSG}'"
       system "git remote add server #{REMOTE}"
-      system "git push server main --force -y"
-    else
-      puts "This task only runs on the main branch. Skipping for #{BRANCH}."
-    end
-  else
-    puts 'Not on Travis-CI. Skipping.'
-  end
+      system "git push server main --force"
+  #   else
+  #     puts "This task only runs on the main branch. Skipping for #{BRANCH}."
+  #   end
+  # else
+  #   puts 'Not on Travis-CI. Skipping.'
+  # end
 end
