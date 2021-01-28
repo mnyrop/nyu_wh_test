@@ -30,11 +30,11 @@ task :deploy do
       puts "Deploying to host from Travis-CI"
 
       Dir.chdir '_site'
-      system 'git init'
-      system "git checkout -b main"
-      system "git add . && git commit -m '#{COMMIT_MSG}'"
-      system "git remote add server #{REMOTE}"
-      system "git push server main --force"
+      sh 'git init'
+      sh "git checkout -b main"
+      sh "git add . && git commit -m '#{COMMIT_MSG}'"
+      sh "git remote add server #{REMOTE}"
+      sh "yes | git push server main --force"
     else
       puts "This task only runs on the main branch. Skipping for #{BRANCH}."
     end

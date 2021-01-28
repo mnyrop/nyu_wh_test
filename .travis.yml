@@ -1,9 +1,6 @@
 language: ruby
 rvm:
  - 2.6
-addons:
-  ssh_known_hosts:
-  - marii.hosting.nyu.edu
 env:
   global:
   - NOKOGIRI_USE_SYSTEM_LIBRARIES=true
@@ -12,4 +9,7 @@ script:
   - bundle exec rake test
 after_success:
   - rm -rf _site && bundle exec jekyll build
+  - echo "   StrictHostKeyChecking no" >> ~/.ssh/config
+  - echo "   CheckHostIP no" >> ~/.ssh/config
+  - echo "   UserKnownHostsFile=/dev/null" >> ~/.ssh/config
   - bundle exec rake deploy
