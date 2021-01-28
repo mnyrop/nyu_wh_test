@@ -26,18 +26,15 @@ task :deploy do
       USER        = ENV['GIT_USER'].freeze
       PW          = ENV['GIT_PW'].freeze
       TARGET      = ENV['GIT_TARGET'].freeze
-      REMOTE      = "ssh://${USER}:${PW}@${TARGET}".freeze
+      REMOTE      = "ssh://#{USER}:#{PW}@#{TARGET}".freeze
       puts "Deploying to host from Travis-CI"
 
-      Dir.mktmpdir do |tmp|
-        cp_r '_site/.', tmp
-        Dir.chdir tmp
-        system 'git init'
-        system "git checkout -b main"
-        system "git add . && git commit -m '#{COMMIT_MSG}'"
-        system "git remote add deploy #{REMOTE}"
-        system "git push --force --quiet deploy main:refs/heads/main"
-      end
+      Dir.chdir '_site'
+      system 'git init'
+      system "git checkout -b main"
+      system "git add . && git commit -m '#{COMMIT_MSG}'"
+      system "git remote add server #{REMOTE}"
+      system "git push server main --force"
     else
       puts "This task only runs on the main branch. Skipping for #{BRANCH}."
     end
