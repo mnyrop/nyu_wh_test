@@ -8,6 +8,9 @@ collections:
   books:
     title: Books
     output: true
+  essays:
+    title: Essays
+    output: true
   posts:
     title: Posts
     output: true
