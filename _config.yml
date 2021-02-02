@@ -8,6 +8,8 @@ collections:
   books:
     title: Books
     output: true
+    Editors:
+    - 
   essays:
     title: Essays
     output: true
