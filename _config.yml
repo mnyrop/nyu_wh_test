@@ -11,10 +11,6 @@ collections:
   essays:
     title: Essays
     output: true
-    author:
-      id: 
-      first name: 
-      last name: 
   posts:
     title: Posts
     output: true
